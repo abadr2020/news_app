@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/cubits/news_list_cubit/news_list_cubit.dart';
 import 'news_list_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -30,7 +32,10 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 500),
-          pageBuilder: (_, __, ___) => const NewsListScreen(),
+          pageBuilder: (_, __, ___) => BlocProvider(
+            create: (context) => NewsListCubit(),
+            child: const NewsListScreen(),
+          ),
           transitionsBuilder: (_, anim, __, child) =>
               FadeTransition(opacity: anim, child: child),
         ),

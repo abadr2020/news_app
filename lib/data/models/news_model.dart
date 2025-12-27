@@ -17,7 +17,7 @@ class NewsModel {
   final String description;
   final String imageUrl;
   final String source;
-  final DateTime publishedAt;
+  final String publishedAt;
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
@@ -26,9 +26,8 @@ class NewsModel {
       description: json['description'] ?? 'No Description',
       imageUrl: json['urlToImage'] ?? 'https://via.placeholder.com/150',
       source: json['source']['name'] ?? 'Unknown Source',
-      publishedAt: DateTime.parse(
-        json['publishedAt'] ?? "2024-01-01T00:00:00Z",
-      ),
+      publishedAt: json['publishedAt'] ?? "2024-01-01T00:00:00Z",
+
       author: json['author'] ?? 'Unknown Author',
     );
   }
